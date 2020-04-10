@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from './services/api';
 
 import './App.css';
 
@@ -7,6 +8,12 @@ import Header from './components/Header';
 
 function App() {
   const [projects, setProjects] = useState(['Developer App', 'Init front-end web']);
+
+  useEffect(() => {
+    api.get('projects').then(response => {
+      console.log(response);
+    })
+  }, [])
 
   function handleAddProject() {
     setProjects([...projects, `New project ${Date.now()}`]);
