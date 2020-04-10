@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
+import './App.css';
+
 import Header from './components/Header';
+
 
 function App() {
   const [projects, setProjects] = useState(['Developer App', 'Init front-end web']);
