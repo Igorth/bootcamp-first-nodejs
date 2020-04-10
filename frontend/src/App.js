@@ -7,11 +7,11 @@ import Header from './components/Header';
 
 
 function App() {
-  const [projects, setProjects] = useState(['Developer App', 'Init front-end web']);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     api.get('projects').then(response => {
-      console.log(response);
+      setProjects(response.data);
     })
   }, [])
 
@@ -23,7 +23,7 @@ function App() {
     <>
       <Header title="Homepage" />
       <ul>
-        {projects.map((project) => <li key={project}>{project}</li>)}
+        {projects.map((project) => <li key={project.id}>{project.title}</li>)}
       </ul>
 
       <button type="button" onClick={handleAddProject}>Add project</button>      
